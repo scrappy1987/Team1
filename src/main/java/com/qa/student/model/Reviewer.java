@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Reviewer {
-	
+	//comment
 	@Id
 	@GeneratedValue
 	private Long id;
