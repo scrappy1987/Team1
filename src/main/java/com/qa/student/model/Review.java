@@ -1,8 +1,10 @@
 package com.qa.student.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 
@@ -12,19 +14,22 @@ public class Review {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	//Foreign key - id field in reviewer object
 	@NotNull
-	private Long reviewerID;
-	
-	//Foreign key - id field in reviewer object
-	@NotNull
+	@Column(nullable = false)
 	private Long filmID;
 	
 	@NotNull
+	@Column(nullable = false)
 	private int rating;
 	
+	@Column(length = 300)
 	private String reviewText;
+	
+	public Review () {
+		
+	}
 
 	public Long getId() {
 		return id;
@@ -32,14 +37,6 @@ public class Review {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Long getReviewerID() {
-		return reviewerID;
-	}
-
-	public void setReviewerID(Long reviewerID) {
-		this.reviewerID = reviewerID;
 	}
 
 	public Long getFilmID() {
