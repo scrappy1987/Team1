@@ -1,5 +1,6 @@
 package com.qa.student.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,11 +17,14 @@ public class Review {
 
 	//Foreign key - id field in reviewer object
 	@NotNull
+	@Column(nullable = false)
 	private Long filmID;
 	
 	@NotNull
+	@Column(nullable = false)
 	private int rating;
 	
+	@Column(length = 300)
 	private String reviewText;
 	
 	public Review () {
