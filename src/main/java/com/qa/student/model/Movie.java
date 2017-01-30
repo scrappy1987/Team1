@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import java.util.Date;
@@ -72,34 +71,6 @@ public class Movie {
 	{
 		
 	}
-	
-	public Movie(Long film_id, String title, String genre, String description,
-			String certification, Date releaseDate, int duration,
-			String language) {
-		super();
-		this.film_id = film_id;
-		this.title = title;
-		this.genre = genre;
-		this.description = description;
-		this.certification = certification;
-		this.releaseDate = releaseDate;
-		this.duration = duration;
-		this.language = language;
-	}
-	
-	public Movie(Long film_id, String title, String genre,
-			String certification, Date releaseDate, int duration,
-			String language) {
-		super();
-		this.film_id = film_id;
-		this.title = title;
-		this.genre = genre;
-		this.certification = certification;
-		this.releaseDate = releaseDate;
-		this.duration = duration;
-		this.language = language;
-	}
-
 	public Long getFilm_id() {
 		return film_id;
 	}
