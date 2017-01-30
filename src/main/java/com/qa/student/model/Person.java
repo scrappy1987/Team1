@@ -20,7 +20,24 @@ public class Person {
 	@NotNull
 	private int idAddress;
 	
-	Person(){
+	public Person(){
+	}
+	public Person(String firstName, String surname,
+			String dateOfBirth, int idAddress) {
+		super();
+		this.firstName = firstName;
+		this.surname = surname;
+		this.dateOfBirth = dateOfBirth;
+		this.idAddress = idAddress;
+	}
+	public Person(int idPerson, String firstName, String surname,
+			String dateOfBirth, int idAddress) {
+		super();
+		this.idPerson = idPerson;
+		this.firstName = firstName;
+		this.surname = surname;
+		this.dateOfBirth = dateOfBirth;
+		this.idAddress = idAddress;
 	}
 
 	public int getIdPerson() {
