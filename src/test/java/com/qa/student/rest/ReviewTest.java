@@ -8,7 +8,7 @@ public class ReviewTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		fail("Not yet implented");
 	}
 
 }
