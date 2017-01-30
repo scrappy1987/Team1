@@ -1,14 +1,11 @@
+package com.qa.student.model;
 
 public class Director {
 
 	int director_id;
 	String first_name;
 	String surname;
-	String gender;
-	int dateOfBirth;
-	String nationality;
-	String bio;
-
+	
 	//constructor
 	public Director(){
 		
@@ -36,37 +33,5 @@ public class Director {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public int getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(int dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
-	public String getNationality() {
-		return nationality;
-	}
-
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
-	}
-
-	public String getBio() {
-		return bio;
-	}
-
-	public void setBio(String bio) {
-		this.bio = bio;
 	}
 }
