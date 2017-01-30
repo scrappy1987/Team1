@@ -14,9 +14,9 @@ public class Showing {
 	@GeneratedValue
 	private Long id;
 
-	private Time showingTime;
+	private String showingTime;
 
-	private Time showingDuration;
+	private String showingDuration;
 
 	// ======================================
 	// = Constructors =
@@ -26,7 +26,7 @@ public class Showing {
 		
 	}
 	
-	public Showing(Time time, Time duration){
+	public Showing(String time, String duration){
 		this.showingTime = time;
 		this.showingDuration = duration;
 	}
@@ -43,19 +43,19 @@ public class Showing {
 		this.id = id;
 	}
 
-	public Time getShowingTime() {
+	public String getShowingTime() {
 		return showingTime;
 	}
 
-	public void setShowingTime(Time showingTime) {
+	public void setShowingTime(String showingTime) {
 		this.showingTime = showingTime;
 	}
 
-	public Time getShowingDuration() {
+	public String getShowingDuration() {
 		return showingDuration;
 	}
 
-	public void setShowingDuration(Time showingDuration) {
+	public void setShowingDuration(String showingDuration) {
 		this.showingDuration = showingDuration;
 	}
 	
