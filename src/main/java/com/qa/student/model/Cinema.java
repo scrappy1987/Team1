@@ -30,7 +30,6 @@ public class Cinema {
 	private int capacity;
 
 	public Cinema() {
-
 	}
 
 	public int getCinemaId() {

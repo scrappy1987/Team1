@@ -62,31 +62,19 @@ public class CinemaTest {
 	@Test
 	public void ToString() {
 		Cinema c = new Cinema();
-	    assertNotNull(c.toString());
-	    }
+		assertNotNull(c.toString());
+	}
+
 	@Test
 	public void hashcode() {
 		Cinema c = new Cinema();
-	    assertNotNull(c.hashCode());
-	    }
-	@Test
-	public void equals(){
-		EqualsVerifier.forClass(Cinema.class)
-		.usingGetClass()
-		.verify();
-		
+		assertNotNull(c.hashCode());
 	}
-	
-	
-	
-	
-	
-	
+
+	@Test
+	public void equals() {
+		EqualsVerifier.forClass(Cinema.class).usingGetClass().verify();
+
+	}
+
 }
-
-
-
-
-
-
-
