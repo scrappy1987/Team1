@@ -2,6 +2,8 @@ package com.qa.student.rest;
 
 import static org.junit.Assert.*;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+
 import org.junit.Test;
 
 import com.qa.student.model.Review;
@@ -37,16 +39,19 @@ public class ReviewTest {
 	
 	@Test
 	public void testEquals() {
-		rev.setId(100l);
-		rev.setFilmID(101l);
-		rev.setRating(5);
-		rev.setReviewText("A review");
-		Review revTwo = new Review();
-		revTwo.setId(100l);
-		revTwo.setFilmID(101l);
-		revTwo.setRating(5);
-		revTwo.setReviewText("A review");
-		assertEquals(revTwo,rev);
+//		rev.setId(100l);
+//		rev.setFilmID(101l);
+//		rev.setRating(5);
+//		rev.setReviewText("A review");
+//		Review revTwo = new Review(); 
+//		revTwo.setId(100l);
+//		revTwo.setFilmID(101l);
+//		revTwo.setRating(5);
+//		revTwo.setReviewText("A review");
+		EqualsVerifier.forClass(Review.class).usingGetClass().verify();
+		
 	}
+	
+	
 
 }
