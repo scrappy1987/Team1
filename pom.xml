@@ -53,6 +53,14 @@
                 for your project, such as Arquillian for testing) and the jboss-javaee-6.0-with-hibernate 
                 stack you can read this as the JBoss stack of the Java EE 6 APIs, with extras 
                 from the Hibernate family of projects) -->
+                
+               
+               
+                
+
+
+                
+                
             <dependency>
                 <groupId>org.jboss.bom.eap</groupId>
                 <artifactId>jboss-javaee-6.0-with-tools</artifactId>
@@ -71,6 +79,18 @@
     </dependencyManagement>
 
     <dependencies>
+
+
+
+               <!-- https://mvnrepository.com/artifact/nl.jqno.equalsverifier/equalsverifier -->
+<dependency>
+    <groupId>nl.jqno.equalsverifier</groupId>
+    <artifactId>equalsverifier</artifactId>
+    <version>2.2.1</version>
+</dependency>
+
+
+
 
         <!-- First declare the APIs we depend on and need for compilation. All 
             of them are provided by JBoss EAP 6 -->
