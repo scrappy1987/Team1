@@ -52,6 +52,12 @@ public class ReviewTest {
 		
 	}
 	
+	@Test
+	public void testToString() {
+		Object revString = rev.toString();
+		assertTrue(revString instanceof String);
+	}
+	
 	
 
 }
