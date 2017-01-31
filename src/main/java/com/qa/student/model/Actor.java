@@ -83,7 +83,7 @@ public class Actor {
 			return false;
 		if (surname == null) {
 			if (other.surname != null)
-				return false; 
+				return false;  
 		} else if (!surname.equals(other.surname))
 			return false;
 		return true;

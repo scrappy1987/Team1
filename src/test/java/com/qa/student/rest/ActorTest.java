@@ -35,7 +35,7 @@ public class ActorTest {
 	@Test
 	public void testEquals() {
 		EqualsVerifier.forClass(Actor.class).usingGetClass().verify();
-	}
+	} 
 
 	@Test
 	public void testToString() {
