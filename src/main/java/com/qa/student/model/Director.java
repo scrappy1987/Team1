@@ -25,7 +25,7 @@ public class Director {
 
 	public void setFirst_name(String first_name) {
 		this.first_name = first_name;
-	}d
+	}
 
 	public String getSurname() {
 		return surname;
