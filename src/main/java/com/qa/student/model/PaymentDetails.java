@@ -1,5 +1,7 @@
 package com.qa.student.model;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +25,7 @@ public class PaymentDetails {
 //	@JoinColumn(name="customer_id", nullable=false)
 //	@NotNull
 //	private Customer customer;
-	
+	 
 	
 	@Column(nullable=false)
 	@NotNull
@@ -31,8 +33,12 @@ public class PaymentDetails {
 	
 	@Column(nullable=false)
 	@NotNull
+	private String CardName;
+	
+	@Column(nullable=false)
+	@NotNull
 	@Temporal(TemporalType.DATE)
-	private int expiryDate;
+	private Date expiryDate;
 	
 	public PaymentDetails() {
 		super();
@@ -52,14 +58,22 @@ public class PaymentDetails {
 	}
 
 	public void setCardNumber(Integer cardNumber) {
-		this.cardNumber = cardNumber;
+		this.cardNumber = cardNumber; 
 	}
 
-	public int getExpiryDate() {
+	public String getCardName() {
+		return CardName;
+	}
+
+	public void setCardName(String cardName) {
+		CardName = cardName;
+	}
+	
+	public Date getExpiryDate() {
 		return expiryDate;
 	}
 
-	public void setExpiryDate(int expiryDate) {
+	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
 	}
 
@@ -70,43 +84,43 @@ public class PaymentDetails {
 				+ "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((cardNumber == null) ? 0 : cardNumber.hashCode());
-		result = prime * result + expiryDate;
-		result = prime
-				* result
-				+ ((payment_details_id == null) ? 0 : payment_details_id
-						.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PaymentDetails other = (PaymentDetails) obj;
-		if (cardNumber == null) {
-			if (other.cardNumber != null)
-				return false;
-		} else if (!cardNumber.equals(other.cardNumber))
-			return false;
-		if (expiryDate != other.expiryDate)
-			return false;
-		if (payment_details_id == null) {
-			if (other.payment_details_id != null)
-				return false;
-		} else if (!payment_details_id.equals(other.payment_details_id))
-			return false;
-		return true;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result
+//				+ ((cardNumber == null) ? 0 : cardNumber.hashCode());
+//		result = prime * result + expiryDate;
+//		result = prime
+//				* result
+//				+ ((payment_details_id == null) ? 0 : payment_details_id
+//						.hashCode());
+//		return result;
+//	}
+//
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		PaymentDetails other = (PaymentDetails) obj;
+//		if (cardNumber == null) {
+//			if (other.cardNumber != null)
+//				return false;
+//		} else if (!cardNumber.equals(other.cardNumber))
+//			return false;
+//		if (expiryDate != other.expiryDate)
+//			return false;
+//		if (payment_details_id == null) {
+//			if (other.payment_details_id != null)
+//				return false;
+//		} else if (!payment_details_id.equals(other.payment_details_id))
+//			return false;
+//		return true;
+//	}
 	
 	
 }
