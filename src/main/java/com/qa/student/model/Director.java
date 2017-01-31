@@ -1,9 +1,19 @@
 package com.qa.student.model;
 
-public class Director {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
+@Entity
+public class Director {
+	
+	@Id
+	@GeneratedValue
 	int director_id;
+	@NotNull
 	String first_name;
+	@NotNull
 	String surname;
 	
 	//constructor
