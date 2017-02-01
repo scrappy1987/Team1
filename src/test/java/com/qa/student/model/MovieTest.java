@@ -1,4 +1,4 @@
-package com.qa.student.rest;
+package com.qa.student.model;
 
 import static org.junit.Assert.*;
 

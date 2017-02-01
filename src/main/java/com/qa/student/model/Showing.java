@@ -2,9 +2,11 @@ package com.qa.student.model;
 
 import java.sql.Time;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Showing {
 	// ======================================
 	// = Attributes =

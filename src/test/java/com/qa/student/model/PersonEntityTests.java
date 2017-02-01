@@ -1,5 +1,5 @@
 
-package com.qa.student.rest;
+package com.qa.student.model;
 
 import com.qa.student.model.*;
 

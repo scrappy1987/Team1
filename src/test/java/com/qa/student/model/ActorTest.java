@@ -1,4 +1,4 @@
-package com.qa.student.rest;
+package com.qa.student.model;
 
 import org.junit.Test;
 import nl.jqno.equalsverifier.EqualsVerifier;

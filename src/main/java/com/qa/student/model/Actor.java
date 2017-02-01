@@ -1,13 +1,13 @@
 package com.qa.student.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 //import java.util.HashSet;
 //import java.util.Set;
-//import javax.persistence.Entity;
 //import javax.persistence.FetchType;
 //import static javax.persistence.GenerationType.IDENTITY;
 //import javax.persistence.CascadeType;
@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 //import javax.persistence.Table;
 //import javax.persistence.UniqueConstraint;
 
-
+@Entity
 public class Actor {
 	@Id
 	@GeneratedValue
