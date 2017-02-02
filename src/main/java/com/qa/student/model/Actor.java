@@ -56,6 +56,26 @@ public class Actor {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
+	
+	
+	public Long getActor_id() {
+		return actor_id;
+	}
+	public void setActor_id(Long actor_id) {
+		this.actor_id = actor_id;
+	}
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+	public ArrayList<Movie> getMovies() {
+		return movies;
+	}
+	public void setMovies(ArrayList<Movie> movies) {
+		this.movies = movies;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
