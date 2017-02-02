@@ -3,19 +3,23 @@ package com.qa.student.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Ticket {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(nullable = false)
 	private Long id;
 	
-	//Foreign key - ID of showing
-	@Column(nullable = false, name = "showing_id")
-	private Long showingID;
+	@ManyToOne
+	@JoinColumn(name = "showing_id", nullable = false)
+	@Column(nullable = false, name = "showing")
+	private Showing showing;
 	
 	@Column(nullable = false, name = "ticket_type")
 	private String ticketType;
@@ -38,12 +42,12 @@ public class Ticket {
 		this.id = id;
 	}
 
-	public Long getShowingID() {
-		return showingID;
+	public Showing getShowing() {
+		return showing;
 	}
 
-	public void setShowingID(Long showingID) {
-		this.showingID = showingID;
+	public void setShowing(Showing showing) {
+		this.showing = showing;
 	}
 
 	public String getTicketType() {
@@ -69,8 +73,6 @@ public class Ticket {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
-
 
 	@Override
 	public int hashCode() {
@@ -81,8 +83,7 @@ public class Ticket {
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + seatNumber;
-		result = prime * result
-				+ ((showingID == null) ? 0 : showingID.hashCode());
+		result = prime * result + ((showing == null) ? 0 : showing.hashCode());
 		result = prime * result
 				+ ((ticketType == null) ? 0 : ticketType.hashCode());
 		return result;
@@ -107,10 +108,10 @@ public class Ticket {
 			return false;
 		if (seatNumber != other.seatNumber)
 			return false;
-		if (showingID == null) {
-			if (other.showingID != null)
+		if (showing == null) {
+			if (other.showing != null)
 				return false;
-		} else if (!showingID.equals(other.showingID))
+		} else if (!showing.equals(other.showing))
 			return false;
 		if (ticketType == null) {
 			if (other.ticketType != null)
@@ -122,11 +123,10 @@ public class Ticket {
 
 	@Override
 	public String toString() {
-		return "Ticket [id=" + id + ", showingID=" + showingID
-				+ ", ticketType=" + ticketType + ", seatNumber=" + seatNumber
-				+ ", price=" + price + "]";
+		return "Ticket [id=" + id + ", showing=" + showing + ", ticketType="
+				+ ticketType + ", seatNumber=" + seatNumber + ", price="
+				+ price + "]";
 	}
-	
 	
 	
 	
