@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 @Entity
@@ -22,23 +23,22 @@ public class Movie {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long film_id;
 	
-	//COMMENTED OUT CODE IS POSSIBLE IMPLEMENTATION FOR RELATIONS BETWEEN FILM, DIRECTORS AND ACTORS
-	/*
-	@Column(nullable=false)
+	
+	@Column(name = "director",nullable=false)
 	@ManyToMany(cascade= CascadeType.ALL)
 	@JoinTable(name="Film_Director_Join",joinColumns =
 	{@JoinColumn(name ="film_id",nullable = false)},
 	inverseJoinColumns = {@JoinColumn(name = "director_id", nullable = false)})
-	private Director director;
+	private ArrayList<Director> directors = new ArrayList<Director>();
 	
 
-	@Column(nullable=false)
+	@Column(name = "actor",nullable=false)
 	@ManyToMany(cascade= CascadeType.ALL)
 	@JoinTable(name="Film_Actor_Join",joinColumns =
 	{@JoinColumn(name ="film_id",nullable = false)},
 	inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false)})
-	private Actor actor;
-	*/
+	private ArrayList<Actor> actors = new ArrayList<Actor>();
+	
 	
 	@Column(nullable = false, length = 100)
 	@Size(max = 100)
