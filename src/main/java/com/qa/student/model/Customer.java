@@ -10,6 +10,46 @@ public class Customer {
 	@GeneratedValue
 	private int accountNumber;
 	
+	public Person getStaffPerson() {
+		return staffPerson;
+	}
+
+	public void setStaffPerson(Person staffPerson) {
+		this.staffPerson = staffPerson;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public Review getReview() {
+		return review;
+	}
+
+	public void setReview(Review review) {
+		this.review = review;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public PaymentDetails getPaymentDetails() {
+		return paymentDetails;
+	}
+
+	public void setPaymentDetails(PaymentDetails paymentDetails) {
+		this.paymentDetails = paymentDetails;
+	}
+
 	//foreign key
 	@Id
 	private int personID;
