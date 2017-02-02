@@ -123,6 +123,18 @@ public class Movie {
 		return duration;
 	}
 
+	public ArrayList<Director> getDirectors() {
+		return directors;
+	}
+	public void setDirectors(ArrayList<Director> directors) {
+		this.directors = directors;
+	}
+	public ArrayList<Actor> getActors() {
+		return actors;
+	}
+	public void setActors(ArrayList<Actor> actors) {
+		this.actors = actors;
+	}
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
