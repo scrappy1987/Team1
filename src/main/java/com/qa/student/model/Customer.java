@@ -1,11 +1,6 @@
 package com.qa.student.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -27,10 +22,31 @@ public class Customer {
 	@Column(name = "Phone Number")
 	private int phoneNum;
 
-	/* @OneToOne
+	@OneToOne
     @MapsId
-	Person staffPerson;*/
+	Person staffPerson;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="order_id")
+	private Order order;
+	
+	//review
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="id")
+	private Review review;
+	
+	//person
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idPerson", nullable = false)
+	@NotNull
+	private Person person;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="payment_details_id", nullable=false)
+	@NotNull
+	
+	
+	private PaymentDetails paymentDetails;
 	
 	public int getAccountNumber() {
 		return accountNumber;
