@@ -36,14 +36,14 @@ public class CinemaTest {
 	@Test
 	public void getScreens() {
 		Cinema c = new Cinema();
-		assertNotEquals(c.getScreens(), null);
+		assertEquals(c.getNumOFScreens(), null);
 	}
 
 	@Test
 	public void setScreens() {
 		Cinema c = new Cinema();
 		c.setNumOFScreens("");
-		assertNotEquals(c.getScreens(), null);
+		assertNotEquals(c.getNumOFScreens(), null);
 	}
 
 	@Test
