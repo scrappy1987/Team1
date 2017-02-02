@@ -1,6 +1,6 @@
 package com.qa.student.model;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,11 +15,11 @@ import javax.validation.constraints.NotNull;
 //
 //import static javax.persistence.GenerationType.IDENTITY;
 
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+//import javax.persistence.CascadeType;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.JoinTable;
+//import javax.persistence.ManyToMany;
+//import javax.persistence.OneToOne;
 //import javax.persistence.Table;
 //import javax.persistence.UniqueConstraint;
 
@@ -102,20 +102,20 @@ public class Actor {
 	}
 
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="idPerson", nullable=false)
-	@NotNull
-	private Person person;
-	
-	@Column(name = "Movie", nullable = false)
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Film_Actor_Join", joinColumns = 
-			{
-			@JoinColumn(name = "actor_id", nullable = false) 
-			},
-			inverseJoinColumns = { 
-			@JoinColumn(name = "film_id", nullable = false)
-			})
-	private ArrayList<Movie> movies = new ArrayList<Movie>();
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="idPerson", nullable=false)
+//	@NotNull
+//	private Person person;
+//	
+//	@Column(name = "Movie", nullable = false)
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "Film_Actor_Join", joinColumns = 
+//			{
+//			@JoinColumn(name = "actor_id", nullable = false) 
+//			},
+//			inverseJoinColumns = { 
+//			@JoinColumn(name = "film_id", nullable = false)
+//			})
+//	private ArrayList<Movie> movies = new ArrayList<Movie>();
 
 }
