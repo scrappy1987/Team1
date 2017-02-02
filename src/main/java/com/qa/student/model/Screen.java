@@ -38,7 +38,6 @@ public class Screen {
 	@NotNull
 	private Cinema cinema;
 	
-	
 	// ======================================
 	// = Constructors =
 	// ======================================
@@ -89,10 +88,26 @@ public class Screen {
 		this.screenSize = screenSize;
 	}
 	
+	public Set<Showing> getShowings() {
+		return showings;
+	}
+
+	public void setShowings(Set<Showing> showings) {
+		this.showings = showings;
+	}
+
+	public Cinema getCinema() {
+		return cinema;
+	}
+
+	public void setCinema(Cinema cinema) {
+		this.cinema = cinema;
+	}
+	
 	// ======================================
 	// = hashcode, equals & toString =
 	// ======================================
-	
+
 	@Override
 	public String toString() {
 		return "Screen [id=" + id + ", noPremiumSeats=" + noPremiumSeats + ", noStandardSeats=" + noStandardSeats

@@ -30,7 +30,7 @@ public class Showing {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name= "ticketId")
 	private Set<Ticket> tickets = new HashSet<Ticket>();
-	
+
 	@ManyToOne
 	@JoinColumn(name="screenId",nullable=false)
 	@NotNull
@@ -79,6 +79,30 @@ public class Showing {
 
 	public void setShowingDuration(String showingDuration) {
 		this.showingDuration = showingDuration;
+	}
+	
+	public Set<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(Set<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+
+	public Screen getScreen() {
+		return screen;
+	}
+
+	public void setScreen(Screen screen) {
+		this.screen = screen;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 	
 	// ======================================
