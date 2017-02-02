@@ -31,7 +31,7 @@ public class Cinema {
 
 	@Column(nullable = true, length = 225)
 	@Size(max = 225)
-	private String screens;
+	private String numOFScreens;
 
 	@Column(nullable = true)
 	private int capacity;
@@ -44,7 +44,7 @@ public class Cinema {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Screen_id", nullable = false)
 	@NotNull
-	private Set<Screen> screen = new HashSet<Screen>();
+	private Set<Screen> screens = new HashSet<Screen>();
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Staff_id", nullable = false)
@@ -54,42 +54,81 @@ public class Cinema {
 	public Cinema() {
 	}
 
-	public int getCinemaId() {
-		return cinema_Id;
-	}
-
-	public void setCinemaId(int Id) {
-		this.cinema_Id = Id;
-	}
-
+	
 	public String getName() {
 		return name;
 	}
+
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getScreens() {
-		return screens;
+
+	public int getCinema_Id() {
+		return cinema_Id;
 	}
 
-	public void setScreens(String screens) {
-		this.screens = screens;
+
+	public void setCinema_Id(int cinema_Id) {
+		this.cinema_Id = cinema_Id;
 	}
+
+
+	public String getNumOFScreens() {
+		return numOFScreens;
+	}
+
+
+	public void setNumOFScreens(String numOFScreens) {
+		this.numOFScreens = numOFScreens;
+	}
+
 
 	public int getCapacity() {
 		return capacity;
 	}
 
+
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
 
+
+	public Address getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+
+	public Set<Screen> getScreens() {
+		return screens;
+	}
+
+
+	public void setScreens(Set<Screen> screens) {
+		this.screens = screens;
+	}
+
+
+	public Set<Staff> getStaff() {
+		return staff;
+	}
+
+
+	public void setStaff(Set<Staff> staff) {
+		this.staff = staff;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Cinema [name=" + name + ", Id=" + cinema_Id + ", screens="
-				+ screens + ", capacity=" + capacity + "]";
+				+ numOFScreens + ", capacity=" + capacity + "]";
 	}
 
 	@Override
@@ -99,7 +138,7 @@ public class Cinema {
 		result = prime * result + cinema_Id;
 		result = prime * result + capacity;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((screens == null) ? 0 : screens.hashCode());
+		result = prime * result + ((numOFScreens == null) ? 0 : numOFScreens.hashCode());
 		return result;
 	}
 
@@ -121,10 +160,10 @@ public class Cinema {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (screens == null) {
-			if (other.screens != null)
+		if (numOFScreens == null) {
+			if (other.numOFScreens != null)
 				return false;
-		} else if (!screens.equals(other.screens))
+		} else if (!numOFScreens.equals(other.numOFScreens))
 			return false;
 		return true;
 	}
