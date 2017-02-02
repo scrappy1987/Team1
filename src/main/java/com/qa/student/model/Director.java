@@ -21,6 +21,14 @@ public class Director {
 		
 	}
 	
+	//person
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idPerson", nullable = false)
+	@NotNull
+	private Person person;
+	
+	
+	///many to many join with movie
 	@Column(name = "Movie",nullable=false)
 	@ManyToMany(cascade= CascadeType.ALL)
 	@JoinTable(name="Film_Director_Join",joinColumns =
