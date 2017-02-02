@@ -44,9 +44,8 @@ public class Customer {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="payment_details_id", nullable=false)
 	@NotNull
-	
-	
 	private PaymentDetails paymentDetails;
+	
 	
 	public int getAccountNumber() {
 		return accountNumber;
