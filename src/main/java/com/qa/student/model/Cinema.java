@@ -1,9 +1,16 @@
 package com.qa.student.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,7 +27,7 @@ public class Cinema {
 	@Id
 	@Column(nullable = false, unique = true)
 	@GeneratedValue
-	private int Id;
+	private int cinema_Id;
 
 	@Column(nullable = true, length = 225)
 	@Size(max = 225)
@@ -29,15 +36,30 @@ public class Cinema {
 	@Column(nullable = true)
 	private int capacity;
 
+	@OneToOne
+	@JoinColumn(name = "address_id", nullable = false)
+	@NotNull
+	private Address address;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Screen_id", nullable = false)
+	@NotNull
+	private Set<Screen> screen = new HashSet<Screen>();
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Staff_id", nullable = false)
+	@NotNull
+	private Set<Staff> staff = new HashSet<Staff>();
+
 	public Cinema() {
 	}
 
 	public int getCinemaId() {
-		return Id;
+		return cinema_Id;
 	}
 
 	public void setCinemaId(int Id) {
-		this.Id = Id;
+		this.cinema_Id = Id;
 	}
 
 	public String getName() {
@@ -66,15 +88,15 @@ public class Cinema {
 
 	@Override
 	public String toString() {
-		return "Cinema [name=" + name + ", Id=" + Id + ", screens=" + screens
-				+ ", capacity=" + capacity + "]";
+		return "Cinema [name=" + name + ", Id=" + cinema_Id + ", screens="
+				+ screens + ", capacity=" + capacity + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Id;
+		result = prime * result + cinema_Id;
 		result = prime * result + capacity;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((screens == null) ? 0 : screens.hashCode());
@@ -90,7 +112,7 @@ public class Cinema {
 		if (getClass() != obj.getClass())
 			return false;
 		Cinema other = (Cinema) obj;
-		if (Id != other.Id)
+		if (cinema_Id != other.cinema_Id)
 			return false;
 		if (capacity != other.capacity)
 			return false;
