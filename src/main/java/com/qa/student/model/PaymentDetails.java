@@ -19,13 +19,12 @@ public class PaymentDetails {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long payment_details_id;
-	
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="customer_id", nullable=false)
-//	@NotNull
-//	private Customer customer;
-	 
-	
+  
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="customer_id", nullable=false)
+	@NotNull
+	private Customer customer;
+  
 	@Column(nullable=false)
 	@NotNull
 	private Integer cardNumber;
@@ -74,6 +73,14 @@ public class PaymentDetails {
 
 	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
+	}	
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	@Override
