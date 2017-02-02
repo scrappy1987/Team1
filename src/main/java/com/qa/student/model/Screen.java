@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -27,8 +29,15 @@ public class Screen {
 
 	private int screenSize;
 	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private Set<Showing> showings = new HashSet<>();
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name= "showingId")
+	private Set<Showing> showings = new HashSet<Showing>();
+	
+	@ManyToOne
+	@JoinColumn(name="cinemaId",nullable=false)
+	@NotNull
+	private Cinema cinema;
+	
 	
 	// ======================================
 	// = Constructors =
