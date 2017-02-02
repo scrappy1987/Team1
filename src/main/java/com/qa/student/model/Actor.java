@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import java.util.ArrayList;
 //import java.util.HashSet;
 //import java.util.Set;
 //
@@ -15,11 +16,12 @@ import javax.validation.constraints.NotNull;
 //
 //import static javax.persistence.GenerationType.IDENTITY;
 
-//import javax.persistence.CascadeType;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.JoinTable;
-//import javax.persistence.ManyToMany;
-//import javax.persistence.OneToOne;
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+
 //import javax.persistence.Table;
 //import javax.persistence.UniqueConstraint;
 
@@ -33,6 +35,22 @@ public class Actor {
 	private String first_name;
 	@NotNull
 	private String surname;
+  
+  @OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idPerson", nullable=false)
+	@NotNull
+	private Person person;
+	
+	@Column(name = "Movie", nullable=false)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "Film_Actor_Join", joinColumns = 
+			{
+			@JoinColumn(name = "actor_id", nullable = false) 
+			},
+			inverseJoinColumns = { 
+			@JoinColumn(name = "film_id", nullable = false)
+			})
+	private ArrayList<Movie> movies = new ArrayList<Movie>();
 
 	@Column(name = "actor_id", unique = true, nullable = false)
 	public Long getActorId() {
@@ -56,6 +74,26 @@ public class Actor {
 	}
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+	
+	
+	public Long getActor_id() {
+		return actor_id;
+	}
+	public void setActor_id(Long actor_id) {
+		this.actor_id = actor_id;
+	}
+	public Person getPerson() {
+		return person;
+	}
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+	public ArrayList<Movie> getMovies() {
+		return movies;
+	}
+	public void setMovies(ArrayList<Movie> movies) {
+		this.movies = movies;
 	}
 	@Override
 	public int hashCode() {
@@ -100,22 +138,5 @@ public class Actor {
 		return "Actor [actor_id=" + actor_id + ", first_name=" + first_name
 				+ ", surname=" + surname + "]";
 	}
-
-	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="idPerson", nullable=false)
-//	@NotNull
-//	private Person person;
-//	
-//	@Column(name = "Movie", nullable = false)
-//	@ManyToMany(cascade = CascadeType.ALL)
-//	@JoinTable(name = "Film_Actor_Join", joinColumns = 
-//			{
-//			@JoinColumn(name = "actor_id", nullable = false) 
-//			},
-//			inverseJoinColumns = { 
-//			@JoinColumn(name = "film_id", nullable = false)
-//			})
-//	private ArrayList<Movie> movies = new ArrayList<Movie>();
 
 }
