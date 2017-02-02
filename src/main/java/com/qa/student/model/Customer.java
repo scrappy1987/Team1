@@ -1,11 +1,6 @@
 package com.qa.student.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -13,8 +8,8 @@ public class Customer {
 	//primary key
 	@Id
 	@GeneratedValue
-	private int accountNumber;
-	
+	private int accountNumber;	
+
 	//foreign key
 	@Id
 	private int personID;
@@ -27,10 +22,69 @@ public class Customer {
 	@Column(name = "Phone Number")
 	private int phoneNum;
 
-	/* @OneToOne
+	@OneToOne
     @MapsId
-	Person staffPerson;*/
+	Person staffPerson;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="order_id")
+	private Order order;
+	
+	//review
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="id")
+	private Review review;
+	
+	//person
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idPerson", nullable = false)
+	@NotNull
+	private Person person;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="payment_details_id", nullable=false)
+	@NotNull
+	private PaymentDetails paymentDetails;
+	
+	public Person getStaffPerson() {
+		return staffPerson;
+	}
+	
+	public void setStaffPerson(Person staffPerson) {
+		this.staffPerson = staffPerson;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	public Review getReview() {
+		return review;
+	}
+
+	public void setReview(Review review) {
+		this.review = review;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public PaymentDetails getPaymentDetails() {
+		return paymentDetails;
+	}
+
+	public void setPaymentDetails(PaymentDetails paymentDetails) {
+		this.paymentDetails = paymentDetails;
+	}
 	
 	public int getAccountNumber() {
 		return accountNumber;
