@@ -36,6 +36,22 @@ public class Director {
 	inverseJoinColumns = {@JoinColumn(name = "film_id", nullable = false)})
 	private ArrayList<Movie> movies = new ArrayList<Movie>();
 	
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	public ArrayList<Movie> getMovies() {
+		return movies;
+	}
+
+	public void setMovies(ArrayList<Movie> movies) {
+		this.movies = movies;
+	}
+
 	public int getDirector_id() {
 		return director_id;
 	}
