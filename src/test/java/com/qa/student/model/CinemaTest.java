@@ -10,14 +10,14 @@ public class CinemaTest {
 	@Test
 	public void getCinemaId() {
 		Cinema c = new Cinema();
-		equals(c.getCinemaId());
+		equals(c.getCinema_Id());
 	}
 
 	@Test
 	public void setCinemaId() {
 		Cinema c = new Cinema();
-		c.setCinemaId(2);
-		assertNotEquals(c.getCinemaId(), null);
+		c.setCinema_Id(2);
+		assertNotEquals(c.getCinema_Id(), null);
 	}
 
 	@Test
@@ -36,14 +36,14 @@ public class CinemaTest {
 	@Test
 	public void getScreens() {
 		Cinema c = new Cinema();
-		assertEquals(c.getScreens(), null);
+		assertEquals(c.getNumOFScreens(), null);
 	}
 
 	@Test
 	public void setScreens() {
 		Cinema c = new Cinema();
-		c.setScreens("");
-		assertNotEquals(c.getScreens(), null);
+		c.setNumOFScreens("");
+		assertNotEquals(c.getNumOFScreens(), null);
 	}
 
 	@Test
@@ -56,7 +56,7 @@ public class CinemaTest {
 	public void setCapacity() {
 		Cinema c = new Cinema();
 		c.setCapacity(0);
-		assertNotEquals(c.getCinemaId(), null);
+		assertNotEquals(c.getCinema_Id(), null);
 	}
 
 	@Test
