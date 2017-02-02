@@ -20,9 +20,9 @@ public class TicketTest {
 	
 	@Test
 	public void testShowingID() {
-		ticket.setShowingID(670l);
-		Long l = new Long(670l);
-		assertEquals(l,ticket.getShowingID());
+		Showing show = new Showing();
+		ticket.setShowing(show);
+		assertEquals(show,ticket.getShowing());
 	}
 
 	@Test
