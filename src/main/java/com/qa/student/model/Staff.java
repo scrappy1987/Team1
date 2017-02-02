@@ -52,7 +52,7 @@ public class Staff {
 		return idStaff;
 	}
 
-	public void setIdPerson(int idStaff) {
+	public void setIdPerson(int idStaff) { 
 		this.idStaff = idStaff;
 	}
 
