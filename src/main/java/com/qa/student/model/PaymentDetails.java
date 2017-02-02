@@ -2,14 +2,14 @@ package com.qa.student.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -19,14 +19,12 @@ public class PaymentDetails {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long payment_details_id;
-	
-	//Commented out code below is possible implementation between the customer and payment details
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="customer_id", nullable=false)
-//	@NotNull
-//	private Customer customer;
-	 
-	
+  
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="customer_id", nullable=false)
+	@NotNull
+	private Customer customer;
+  
 	@Column(nullable=false)
 	@NotNull
 	private Integer cardNumber;
@@ -75,6 +73,14 @@ public class PaymentDetails {
 
 	public void setExpiryDate(Date expiryDate) {
 		this.expiryDate = expiryDate;
+	}	
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	@Override

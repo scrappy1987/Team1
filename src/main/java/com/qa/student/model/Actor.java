@@ -1,5 +1,7 @@
 package com.qa.student.model;
 
+//import java.util.ArrayList;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+
 //import javax.persistence.Table;
 //import javax.persistence.UniqueConstraint;
 
@@ -32,6 +35,22 @@ public class Actor {
 	private String first_name;
 	@NotNull
 	private String surname;
+  
+  @OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idPerson", nullable=false)
+	@NotNull
+	private Person person;
+	
+	@Column(name = "Movie", nullable=false)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "Film_Actor_Join", joinColumns = 
+			{
+			@JoinColumn(name = "actor_id", nullable = false) 
+			},
+			inverseJoinColumns = { 
+			@JoinColumn(name = "film_id", nullable = false)
+			})
+	private ArrayList<Movie> movies = new ArrayList<Movie>();
 
 	@Column(name = "actor_id", unique = true, nullable = false)
 	public Long getActorId() {
@@ -119,22 +138,5 @@ public class Actor {
 		return "Actor [actor_id=" + actor_id + ", first_name=" + first_name
 				+ ", surname=" + surname + "]";
 	}
-
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="idPerson", nullable=false)
-	@NotNull
-	private Person person;
-	
-	@Column(name = "Movie", nullable=false)
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Film_Actor_Join", joinColumns = 
-			{
-			@JoinColumn(name = "actor_id", nullable = false) 
-			},
-			inverseJoinColumns = { 
-			@JoinColumn(name = "film_id", nullable = false)
-			})
-	private ArrayList<Movie> movies = new ArrayList<Movie>();
 
 }

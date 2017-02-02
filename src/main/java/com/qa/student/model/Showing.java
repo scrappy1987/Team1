@@ -1,10 +1,17 @@
 package com.qa.student.model;
 
 import java.sql.Time;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Showing {
@@ -19,7 +26,20 @@ public class Showing {
 	private String showingTime;
 
 	private String showingDuration;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name= "ticketId")
+	private Set<Ticket> tickets = new HashSet<Ticket>();
 
+	@ManyToOne
+	@JoinColumn(name="screenId",nullable=false)
+	@NotNull
+	private Screen screen;
+	
+	@ManyToOne
+	@JoinColumn(name="filmId")
+	private Movie movie;
+	
 	// ======================================
 	// = Constructors =
 	// ======================================
@@ -59,6 +79,30 @@ public class Showing {
 
 	public void setShowingDuration(String showingDuration) {
 		this.showingDuration = showingDuration;
+	}
+	
+	public Set<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(Set<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+
+	public Screen getScreen() {
+		return screen;
+	}
+
+	public void setScreen(Screen screen) {
+		this.screen = screen;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 	
 	// ======================================

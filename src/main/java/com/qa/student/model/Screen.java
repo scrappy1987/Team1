@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -27,8 +29,14 @@ public class Screen {
 
 	private int screenSize;
 	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private Set<Showing> showings = new HashSet<>();
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name= "showingId")
+	private Set<Showing> showings = new HashSet<Showing>();
+	
+	@ManyToOne
+	@JoinColumn(name="cinemaId",nullable=false)
+	@NotNull
+	private Cinema cinema;
 	
 	// ======================================
 	// = Constructors =
@@ -80,10 +88,26 @@ public class Screen {
 		this.screenSize = screenSize;
 	}
 	
+	public Set<Showing> getShowings() {
+		return showings;
+	}
+
+	public void setShowings(Set<Showing> showings) {
+		this.showings = showings;
+	}
+
+	public Cinema getCinema() {
+		return cinema;
+	}
+
+	public void setCinema(Cinema cinema) {
+		this.cinema = cinema;
+	}
+	
 	// ======================================
 	// = hashcode, equals & toString =
 	// ======================================
-	
+
 	@Override
 	public String toString() {
 		return "Screen [id=" + id + ", noPremiumSeats=" + noPremiumSeats + ", noStandardSeats=" + noStandardSeats
