@@ -2,6 +2,8 @@ package com.qa.student.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -9,6 +11,11 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "Address")
 public class Address {
+
+	@Id
+	@Column(nullable = false, unique = true)
+	@GeneratedValue
+	private int address_Id;
 
 	@Column(nullable = false, length = 225)
 	@Size(max = 225)
@@ -33,6 +40,14 @@ public class Address {
 	private String postcode;
 
 	public Address() {
+	}
+
+	public int getAddress_Id() {
+		return address_Id;
+	}
+
+	public void setAddress_Id(int address_Id) {
+		this.address_Id = address_Id;
 	}
 
 	public String getAddressLine1() {
@@ -77,9 +92,10 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [addressLine1=" + addressLine1 + ", addressLine2="
-				+ addressLine2 + ", county=" + county + ", country=" + country
-				+ ", postcode=" + postcode + "]";
+		return "Address [address_Id=" + address_Id + ", addressLine1="
+				+ addressLine1 + ", addressLine2=" + addressLine2 + ", county="
+				+ county + ", country=" + country + ", postcode=" + postcode
+				+ "]";
 	}
 
 	@Override
@@ -90,6 +106,7 @@ public class Address {
 				+ ((addressLine1 == null) ? 0 : addressLine1.hashCode());
 		result = prime * result
 				+ ((addressLine2 == null) ? 0 : addressLine2.hashCode());
+		result = prime * result + address_Id;
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		result = prime * result + ((county == null) ? 0 : county.hashCode());
 		result = prime * result
@@ -115,6 +132,8 @@ public class Address {
 			if (other.addressLine2 != null)
 				return false;
 		} else if (!addressLine2.equals(other.addressLine2))
+			return false;
+		if (address_Id != other.address_Id)
 			return false;
 		if (country == null) {
 			if (other.country != null)

@@ -2,6 +2,8 @@ package com.qa.student.model;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 import org.junit.Test;
@@ -21,10 +23,11 @@ public class OrderTest {
 	}
 	
 	@Test
-	public void testTicketId() {
-		order.setTicketId(100l);
-		Long l = new Long(100l);
-		assertEquals(l,order.getTicketId());
+	public void testTickets() {
+		Ticket tickets = new Ticket();
+		order.addTicketToOrder(tickets);
+		List<Ticket> T = order.getTickets();
+		assertEquals(tickets, T.get(0));
 	}
 	
 	@Test
