@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
@@ -15,10 +16,14 @@ public class Review {
 	@GeneratedValue
 	private Long id;
 
-	//Foreign key - id field in reviewer object
-	@NotNull
-	@Column(nullable = false)
-	private Long filmID;
+	@ManyToOne
+	@JoinColumn(name = "film_id", nullable = false)
+	@Column(nullable = false, name = "film")
+	private Movie movie;
+	
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 	
 	@NotNull
 	@Column(nullable = false)
@@ -39,12 +44,12 @@ public class Review {
 		this.id = id;
 	}
 
-	public Long getFilmID() {
-		return filmID;
+	public Movie getMovie() {
+		return movie;
 	}
 
-	public void setFilmID(Long filmID) {
-		this.filmID = filmID;
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 
 	public int getRating() {
@@ -53,6 +58,14 @@ public class Review {
 
 	public void setRating(int rating) {
 		this.rating = rating;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public String getReviewText() {
@@ -64,17 +77,11 @@ public class Review {
 	}
 
 	@Override
-	public String toString() {
-		return "Review [id=" + id + ", filmID=" + filmID + ", rating=" + rating
-				+ ", reviewText=" + reviewText + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((filmID == null) ? 0 : filmID.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((movie == null) ? 0 : movie.hashCode());
 		result = prime * result + rating;
 		result = prime * result
 				+ ((reviewText == null) ? 0 : reviewText.hashCode());
@@ -90,15 +97,15 @@ public class Review {
 		if (getClass() != obj.getClass())
 			return false;
 		Review other = (Review) obj;
-		if (filmID == null) {
-			if (other.filmID != null)
-				return false;
-		} else if (!filmID.equals(other.filmID))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id)) 
+		} else if (!id.equals(other.id))
+			return false;
+		if (movie == null) {
+			if (other.movie != null)
+				return false;
+		} else if (!movie.equals(other.movie))
 			return false;
 		if (rating != other.rating)
 			return false;
@@ -109,7 +116,15 @@ public class Review {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Review [id=" + id + ", movie=" + movie + ", customer="
+				+ customer + ", rating=" + rating + ", reviewText="
+				+ reviewText + "]";
+	}
+
 	
-	
-	
+
+		
 }

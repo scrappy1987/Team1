@@ -20,9 +20,9 @@ public class ReviewTest {
 	
 	@Test
 	public void testFilmID() {
-		rev.setFilmID(101l);
-		Long l = new Long(101l);
-		assertEquals(l,rev.getFilmID());
+		Movie movie = new Movie();
+		rev.setMovie(movie);
+		assertEquals(movie,rev.getMovie());
 	}
 	
 	@Test
