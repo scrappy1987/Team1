@@ -13,21 +13,21 @@ public class Staff {
 
 	@Id
 	@GeneratedValue
-	private int idPerson;
+	private int idStaff;
 
 	@NotNull
 	@Column(name = "Job_Role")
 	private String jobRole;
 
-	/* @OneToOne 
+	@OneToOne 
     @MapsId
-	Person staffPerson;*/
+	Person staffPerson;
 
 	public Staff(){}
 
 	public Staff(int idPerson, String jobRole) {
 		super();
-		this.idPerson = idPerson;
+		this.idStaff = idPerson;
 		this.jobRole = jobRole;
 	}
 	public Staff( String jobRole) {
@@ -35,25 +35,25 @@ public class Staff {
 		this.jobRole = jobRole;
 	}
 
-	/*  public Staff(String jobRole, Person staffPerson) {
+	public Staff(String jobRole, Person staffPerson) {
 		super();
 		this.jobRole = jobRole;
 		this.staffPerson = staffPerson;
 	}
 
-	public Staff(int idPerson, String jobRole, Person staffPerson) {
+	public Staff(int idStaff, String jobRole, Person staffPerson) {
 		super();
-		this.idPerson = idPerson;
+		this.idStaff = idStaff;
 		this.jobRole = jobRole;
 		this.staffPerson = staffPerson;
-	}*/
+	}
 
 	public int getIdPerson() {
-		return idPerson;
+		return idStaff;
 	}
 
-	public void setIdPerson(int idPerson) {
-		this.idPerson = idPerson;
+	public void setIdPerson(int idStaff) {
+		this.idStaff = idStaff;
 	}
 
 	public String getJobRole() {
@@ -64,16 +64,11 @@ public class Staff {
 		this.jobRole = jobRole;
 	}
 	
-
-	@Override
-	public String toString() {
-		return "Staff [idPerson=" + idPerson + ", jobRole=" + jobRole + "]";
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idPerson;
+		result = prime * result + idStaff;
 		result = prime * result + ((jobRole == null) ? 0 : jobRole.hashCode());
 		return result;
 	}
@@ -86,7 +81,7 @@ public class Staff {
 		if (getClass() != obj.getClass())
 			return false;
 		Staff other = (Staff) obj;
-		if (idPerson != other.idPerson)
+		if (idStaff != other.idStaff)
 			return false;
 		if (jobRole == null) {
 			if (other.jobRole != null)
@@ -95,17 +90,17 @@ public class Staff {
 			return false;
 		return true;
 	}
-	/*	public Person getStaffPerson() {
+	public Person getStaffPerson() {
 		return staffPerson;
 	}
 
 	public void setStaffPerson(Person staffPerson) {
 		this.staffPerson = staffPerson;
-	}*/
+	}
 
-	/*@Override
+	@Override
 	public String toString() {
-		return "Staff [idPerson=" + idPerson + ", jobRole=" + jobRole
+		return "Staff [idPerson=" + idStaff + ", jobRole=" + jobRole
 				+ ", staffPerson=" + staffPerson + "]";
-	}	*/
+	}	
 }
