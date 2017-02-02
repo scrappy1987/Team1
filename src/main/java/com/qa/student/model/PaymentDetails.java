@@ -20,11 +20,11 @@ public class PaymentDetails {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long payment_details_id;
 	
-	//Commented out code below is possible implementation between the customer and payment details
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="customer_id", nullable=false)
-//	@NotNull
-//	private Customer customer;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="customer_id", nullable=false)
+	@NotNull
+	private Customer customer;
 	 
 	
 	@Column(nullable=false)
