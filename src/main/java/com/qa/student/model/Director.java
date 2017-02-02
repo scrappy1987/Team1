@@ -16,11 +16,6 @@ public class Director {
 	@NotNull
 	String surname;
 	
-	//constructor
-	public Director(){
-		
-	}
-	
 	//person
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idPerson", nullable = false)
@@ -35,6 +30,12 @@ public class Director {
 	{@JoinColumn(name ="director_id",nullable = false)},
 	inverseJoinColumns = {@JoinColumn(name = "film_id", nullable = false)})
 	private ArrayList<Movie> movies = new ArrayList<Movie>();
+	
+	//constructor
+	public Director(){
+		
+	}
+	
 	
 	public Person getPerson() {
 		return person;
