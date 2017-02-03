@@ -90,9 +90,6 @@ public class Customer {
 
 	public void setPerson(Person person) {
 		this.person = person;
-
-	public String getEmail() {
-		return email;
 	}
 
 	public List<PaymentDetails> getPaymentDetails() {
