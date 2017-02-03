@@ -75,14 +75,4 @@ public class DirectorService {
 			return "You have successfully removed a director";
 		}
 	}
-
-	//not needed?
-	public void addFilmToDirector(int keyToAddTo, Movie newMovie){
-		
-	}
-
-	public String removeFilmFromDirector(int keyToRemoveFrom, int movieID){
-		return null;
-		
-	}
 }
