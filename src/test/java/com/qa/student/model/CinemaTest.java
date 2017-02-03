@@ -17,7 +17,7 @@ public class CinemaTest {
 	public void setCinemaId() {
 		Cinema c = new Cinema();
 		c.setCinema_Id(2);
-		assertNotEquals(c.getCinema_Id(), null);
+		assertNotEquals(c.getCinema_Id(), 0);
 	}
 
 	@Test
@@ -49,7 +49,8 @@ public class CinemaTest {
 	@Test
 	public void getCapacity() {
 		Cinema c = new Cinema();
-		equals(c.getCapacity());
+		c.setCapacity(50);
+		assertEquals(c.getCapacity(), 50);
 	}
 
 	@Test
