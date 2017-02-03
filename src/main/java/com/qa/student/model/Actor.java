@@ -15,6 +15,7 @@ import java.util.ArrayList;
 //import javax.persistence.FetchType;
 //
 //import static javax.persistence.GenerationType.IDENTITY;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
@@ -39,7 +40,7 @@ public class Actor {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idPerson", nullable=false)
 	@NotNull
-	private Person person;
+	private List<Person> people = new ArrayList<Person>();
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "Film_Actor_Join", joinColumns = 
@@ -82,11 +83,11 @@ public class Actor {
 	public void setActor_id(Long actor_id) {
 		this.actor_id = actor_id;
 	}
-	public Person getPerson() {
-		return person;
+	public List<Person> getPerson() {
+		return people;
 	}
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setPerson(List<Person> person) {
+		this.people = person;
 	}
 	public ArrayList<Movie> getMovies() {
 		return movies;

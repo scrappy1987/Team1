@@ -27,7 +27,6 @@ public class Director {
 	@NotNull
 	private Person person;
 	
-	
 	///many to many join with movie
 	@ManyToMany(cascade= CascadeType.ALL)
 	@JoinTable(name="Film_Director_Join",joinColumns =
