@@ -29,7 +29,6 @@ public class Director {
 	
 	
 	///many to many join with movie
-	@Column(name = "Movie",nullable=false)
 	@ManyToMany(cascade= CascadeType.ALL)
 	@JoinTable(name="Film_Director_Join",joinColumns =
 	{@JoinColumn(name ="director_id",nullable = false)},

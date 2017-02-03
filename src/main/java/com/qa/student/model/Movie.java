@@ -23,16 +23,12 @@ public class Movie {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long film_id;
 	
-	
-	@Column(name = "director",nullable=false)
 	@ManyToMany(cascade= CascadeType.ALL)
 	@JoinTable(name="Film_Director_Join",joinColumns =
 	{@JoinColumn(name ="film_id",nullable = false)},
 	inverseJoinColumns = {@JoinColumn(name = "director_id", nullable = false)})
 	private ArrayList<Director> directors = new ArrayList<Director>();
 	
-
-	@Column(name = "actor",nullable=false)
 	@ManyToMany(cascade= CascadeType.ALL)
 	@JoinTable(name="Film_Actor_Join",joinColumns =
 	{@JoinColumn(name ="film_id",nullable = false)},

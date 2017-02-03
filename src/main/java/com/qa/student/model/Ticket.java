@@ -13,12 +13,10 @@ public class Ticket {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(nullable = false)
 	private Long id;
 	
 	@ManyToOne
 	@JoinColumn(name = "showing_id", nullable = false)
-	@Column(nullable = false, name = "showing")
 	private Showing showing;
 	
 	@Column(nullable = false, name = "ticket_type")

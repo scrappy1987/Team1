@@ -36,12 +36,11 @@ public class Actor {
 	@NotNull
 	private String surname;
   
-  @OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idPerson", nullable=false)
 	@NotNull
 	private Person person;
 	
-	@Column(name = "Movie", nullable=false)
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "Film_Actor_Join", joinColumns = 
 			{
