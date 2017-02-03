@@ -25,7 +25,7 @@ public class Showing {
 
 	private String showingTime;
 
-	private String showingDuration;
+	private int showingDuration;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name= "ticketId")
@@ -48,7 +48,7 @@ public class Showing {
 		
 	}
 	
-	public Showing(String time, String duration){
+	public Showing(String time, int duration){
 		this.showingTime = time;
 		this.showingDuration = duration;
 	}
@@ -73,11 +73,11 @@ public class Showing {
 		this.showingTime = showingTime;
 	}
 
-	public String getShowingDuration() {
+	public int getShowingDuration() {
 		return showingDuration;
 	}
 
-	public void setShowingDuration(String showingDuration) {
+	public void setShowingDuration(int showingDuration) {
 		this.showingDuration = showingDuration;
 	}
 	
@@ -119,8 +119,11 @@ public class Showing {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((showingDuration == null) ? 0 : showingDuration.hashCode());
+		result = prime * result + ((movie == null) ? 0 : movie.hashCode());
+		result = prime * result + ((screen == null) ? 0 : screen.hashCode());
+		result = prime * result + showingDuration;
 		result = prime * result + ((showingTime == null) ? 0 : showingTime.hashCode());
+		result = prime * result + ((tickets == null) ? 0 : tickets.hashCode());
 		return result;
 	}
 
@@ -138,15 +141,27 @@ public class Showing {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (showingDuration == null) {
-			if (other.showingDuration != null)
+		if (movie == null) {
+			if (other.movie != null)
 				return false;
-		} else if (!showingDuration.equals(other.showingDuration))
+		} else if (!movie.equals(other.movie))
+			return false;
+		if (screen == null) {
+			if (other.screen != null)
+				return false;
+		} else if (!screen.equals(other.screen))
+			return false;
+		if (showingDuration != other.showingDuration)
 			return false;
 		if (showingTime == null) {
 			if (other.showingTime != null)
 				return false;
 		} else if (!showingTime.equals(other.showingTime))
+			return false;
+		if (tickets == null) {
+			if (other.tickets != null)
+				return false;
+		} else if (!tickets.equals(other.tickets))
 			return false;
 		return true;
 	}

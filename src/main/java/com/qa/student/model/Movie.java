@@ -71,7 +71,7 @@ public class Movie {
 	{
 		
 	}
-	public Long getFilm_id() {
+	public long getFilm_id() {
 		return film_id;
 	}
 
@@ -149,20 +149,23 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [film_id=" + film_id + ", title=" + title + ", genre="
+		return "Movie [film_id=" + film_id + ", directors=" + directors
+				+ ", actors=" + actors + ", title=" + title + ", genre="
 				+ genre + ", description=" + description + ", certification="
 				+ certification + ", releaseDate=" + releaseDate
 				+ ", duration=" + duration + ", language=" + language + "]";
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((actors == null) ? 0 : actors.hashCode());
 		result = prime * result
 				+ ((certification == null) ? 0 : certification.hashCode());
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result
+				+ ((directors == null) ? 0 : directors.hashCode());
 		result = prime * result + duration;
 		result = prime * result + ((film_id == null) ? 0 : film_id.hashCode());
 		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
@@ -173,7 +176,6 @@ public class Movie {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -183,6 +185,11 @@ public class Movie {
 		if (getClass() != obj.getClass())
 			return false;
 		Movie other = (Movie) obj;
+		if (actors == null) {
+			if (other.actors != null)
+				return false;
+		} else if (!actors.equals(other.actors))
+			return false;
 		if (certification == null) {
 			if (other.certification != null)
 				return false;
@@ -192,6 +199,11 @@ public class Movie {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
+			return false;
+		if (directors == null) {
+			if (other.directors != null)
+				return false;
+		} else if (!directors.equals(other.directors))
 			return false;
 		if (duration != other.duration)
 			return false;
@@ -222,4 +234,6 @@ public class Movie {
 			return false;
 		return true;
 	}
+
+	
 }

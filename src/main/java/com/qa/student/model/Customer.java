@@ -14,7 +14,13 @@ public class Customer {
 	@Id
 	@GeneratedValue
 	private int accountNumber;	
-	
+  
+	//person
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idPerson", nullable = false)
+	@NotNull
+	private Person person;
+
 	@NotNull
 	@Column(name = "Email Address")
 	private String email;
@@ -32,11 +38,6 @@ public class Customer {
 	@JoinColumn(name="id")
 	private List<Review> reviews = new ArrayList<Review>();
 	
-	//person
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="idPerson", nullable = false)
-	@NotNull
-	private Person person;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="payment_details_id", nullable=false)
@@ -89,6 +90,9 @@ public class Customer {
 
 	public void setPerson(Person person) {
 		this.person = person;
+
+	public String getEmail() {
+		return email;
 	}
 
 	public List<PaymentDetails> getPaymentDetails() {
