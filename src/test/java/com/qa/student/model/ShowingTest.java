@@ -24,28 +24,28 @@ public class ShowingTest {
 
 	@Test
 	public void getShowingTimeTest() {
-		Showing s = new Showing("5pm", "3 hours");
+		Showing s = new Showing("5pm", 180);
 		assertEquals("5pm", s.getShowingTime());
 	}
 
 	@Test
 	public void setShowingTimeTest() {
-		Showing s = new Showing("5pm", "3 hours");
+		Showing s = new Showing("5pm", 180);
 		s.setShowingTime("6pm");
 		assertEquals("6pm", s.getShowingTime());
 	}
 
 	@Test
 	public void getShowingDurationTest() {
-		Showing s = new Showing("3pm", "4 hours");
-		assertEquals("4 hours", s.getShowingDuration());
+		Showing s = new Showing("3pm", 240);
+		assertEquals(240, s.getShowingDuration());
 	}
 
 	@Test
 	public void setShowingDurationTest() {
-		Showing s = new Showing("3pm", "4 hours");
-		s.setShowingDuration("6 hours");
-		assertEquals("6 hours", s.getShowingDuration());
+		Showing s = new Showing("3pm", 240);
+		s.setShowingDuration(300);
+		assertEquals(300, s.getShowingDuration());
 	}
 
 	@Test
