@@ -18,7 +18,6 @@ public class Review {
 
 	@ManyToOne
 	@JoinColumn(name = "film_id", nullable = false)
-	@Column(nullable = false, name = "film")
 	private Movie movie;
 	
 	@ManyToOne

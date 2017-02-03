@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 public class PaymentDetails {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long payment_details_id;
+	private Long id;
   
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="customer_id", nullable=false)
@@ -43,12 +43,12 @@ public class PaymentDetails {
 	}
 
 	public Long getPayment_details_id() {
-		return payment_details_id;
+		return id;
 	}
 
 
 	public void setPayment_details_id(Long payment_details_id) {
-		this.payment_details_id = payment_details_id;
+		this.id = payment_details_id;
 	}
 
 	public Integer getCardNumber() {
@@ -85,7 +85,7 @@ public class PaymentDetails {
 
 	@Override
 	public String toString() {
-		return "PaymentDetails [payment_details_id=" + payment_details_id
+		return "PaymentDetails [payment_details_id=" + id
 				+ ", cardNumber=" + cardNumber + ", expiryDate=" + expiryDate
 				+ "]";
 	}

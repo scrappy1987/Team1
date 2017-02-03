@@ -15,6 +15,7 @@ import java.util.ArrayList;
 //import javax.persistence.FetchType;
 //
 //import static javax.persistence.GenerationType.IDENTITY;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
@@ -36,21 +37,16 @@ public class Actor {
 	@NotNull
 	private String surname;
   
-  @OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idPerson", nullable=false)
 	@NotNull
-	private Person person;
+	private Person person = new Person();
 	
-	@Column(name = "Movie", nullable=false)
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "Film_Actor_Join", joinColumns = 
-			{
-			@JoinColumn(name = "actor_id", nullable = false) 
-			},
-			inverseJoinColumns = { 
-			@JoinColumn(name = "film_id", nullable = false)
-			})
-	private ArrayList<Movie> movies = new ArrayList<Movie>();
+		{@JoinColumn(name = "actor_id", nullable = false)},
+		inverseJoinColumns = {@JoinColumn(name = "film_id", nullable = false)})
+	private List<Movie> movies = new ArrayList<Movie>();
 
 	@Column(name = "actor_id", unique = true, nullable = false)
 	public Long getActorId() {
@@ -89,7 +85,7 @@ public class Actor {
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-	public ArrayList<Movie> getMovies() {
+	public List<Movie> getMovies() {
 		return movies;
 	}
 	public void setMovies(ArrayList<Movie> movies) {

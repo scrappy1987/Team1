@@ -1,6 +1,7 @@
 package com.qa.student.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -27,14 +28,12 @@ public class Director {
 	@NotNull
 	private Person person;
 	
-	
 	///many to many join with movie
-	@Column(name = "Movie",nullable=false)
 	@ManyToMany(cascade= CascadeType.ALL)
 	@JoinTable(name="Film_Director_Join",joinColumns =
 	{@JoinColumn(name ="director_id",nullable = false)},
 	inverseJoinColumns = {@JoinColumn(name = "film_id", nullable = false)})
-	private ArrayList<Movie> movies = new ArrayList<Movie>();
+	private List<Movie> movies = new ArrayList<Movie>();
 	
 	public Person getPerson() {
 		return person;
@@ -44,11 +43,11 @@ public class Director {
 		this.person = person;
 	}
 
-	public ArrayList<Movie> getMovies() {
+	public List<Movie> getMovies() {
 		return movies;
 	}
 
-	public void setMovies(ArrayList<Movie> movies) {
+	public void setMovies(List<Movie> movies) {
 		this.movies = movies;
 	}
 
