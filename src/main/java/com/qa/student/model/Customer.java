@@ -10,10 +10,12 @@ public class Customer {
 	@GeneratedValue
 	private int accountNumber;	
 
-	//foreign key
-	@Id
-	private int personID;
-	
+	//person
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idPerson", nullable = false)
+	@NotNull
+	private Person person;
+		
 	@NotNull
 	@Column(name = "Email Address")
 	private String email;
@@ -21,10 +23,6 @@ public class Customer {
 	@NotNull
 	@Column(name = "Phone Number")
 	private int phoneNum;
-
-	@OneToOne
-    @MapsId
-	Person staffPerson;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="order_id")
@@ -35,24 +33,13 @@ public class Customer {
 	@JoinColumn(name="id")
 	private Review review;
 	
-	//person
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="idPerson", nullable = false)
-	@NotNull
-	private Person person;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="payment_details_id", nullable=false)
 	@NotNull
 	private PaymentDetails paymentDetails;
 	
-	public Person getStaffPerson() {
-		return staffPerson;
-	}
 	
-	public void setStaffPerson(Person staffPerson) {
-		this.staffPerson = staffPerson;
-	}
 
 	public Order getOrder() {
 		return order;
@@ -92,14 +79,6 @@ public class Customer {
 
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
-	}
-
-	public int getPersonID() {
-		return personID;
-	}
-
-	public void setPersonID(int personID) {
-		this.personID = personID;
 	}
 
 	public String getEmail() {
