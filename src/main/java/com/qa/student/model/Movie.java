@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Movie {
@@ -27,14 +28,13 @@ public class Movie {
 	@JoinTable(name="Film_Director_Join",joinColumns =
 	{@JoinColumn(name ="film_id",nullable = false)},
 	inverseJoinColumns = {@JoinColumn(name = "director_id", nullable = false)})
-	private ArrayList<Director> directors = new ArrayList<Director>();
+	private List<Director> directors = new ArrayList<Director>();
 	
 	@ManyToMany(cascade= CascadeType.ALL)
 	@JoinTable(name="Film_Actor_Join",joinColumns =
-	{@JoinColumn(name ="film_id",nullable = false)},
-	inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false)})
-	private ArrayList<Actor> actors = new ArrayList<Actor>();
-	
+		{@JoinColumn(name ="film_id",nullable = false)},
+		inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false)})
+	private List<Actor> actors = new ArrayList<Actor>();
 	
 	@Column(nullable = false, length = 100)
 	@Size(max = 100)
@@ -119,16 +119,16 @@ public class Movie {
 		return duration;
 	}
 
-	public ArrayList<Director> getDirectors() {
+	public List<Director> getDirectors() {
 		return directors;
 	}
-	public void setDirectors(ArrayList<Director> directors) {
+	public void setDirectors(List<Director> directors) {
 		this.directors = directors;
 	}
-	public ArrayList<Actor> getActors() {
+	public List<Actor> getActors() {
 		return actors;
 	}
-	public void setActors(ArrayList<Actor> actors) {
+	public void setActors(List<Actor> actors) {
 		this.actors = actors;
 	}
 	public void setDuration(int duration) {

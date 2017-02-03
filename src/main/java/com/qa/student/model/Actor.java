@@ -40,17 +40,13 @@ public class Actor {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idPerson", nullable=false)
 	@NotNull
-	private List<Person> people = new ArrayList<Person>();
+	private Person person = new Person();
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "Film_Actor_Join", joinColumns = 
-			{
-			@JoinColumn(name = "actor_id", nullable = false) 
-			},
-			inverseJoinColumns = { 
-			@JoinColumn(name = "film_id", nullable = false)
-			})
-	private ArrayList<Movie> movies = new ArrayList<Movie>();
+		{@JoinColumn(name = "actor_id", nullable = false)},
+		inverseJoinColumns = {@JoinColumn(name = "film_id", nullable = false)})
+	private List<Movie> movies = new ArrayList<Movie>();
 
 	@Column(name = "actor_id", unique = true, nullable = false)
 	public Long getActorId() {
@@ -83,13 +79,13 @@ public class Actor {
 	public void setActor_id(Long actor_id) {
 		this.actor_id = actor_id;
 	}
-	public List<Person> getPerson() {
-		return people;
+	public Person getPerson() {
+		return person;
 	}
-	public void setPerson(List<Person> person) {
-		this.people = person;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
-	public ArrayList<Movie> getMovies() {
+	public List<Movie> getMovies() {
 		return movies;
 	}
 	public void setMovies(ArrayList<Movie> movies) {
