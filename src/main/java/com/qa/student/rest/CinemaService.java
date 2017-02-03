@@ -30,7 +30,7 @@ public class CinemaService {
 	public void createCinema(Cinema cinema) {
 		Cinema checker = em.find(Cinema.class, cinema);
 
-		if (checker == null) {
+		if (checker != null) {
 			cinemaLogger.info("Cinema not added, already exists");
 		} else {
 			em.persist(cinema);
