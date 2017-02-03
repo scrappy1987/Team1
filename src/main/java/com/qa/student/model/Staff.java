@@ -6,9 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "Staff")
 public class Staff {
 
 	@Id
@@ -64,6 +66,8 @@ public class Staff {
 		this.jobRole = jobRole;
 	}
 	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -102,5 +106,13 @@ public class Staff {
 	public String toString() {
 		return "Staff [idPerson=" + idStaff + ", jobRole=" + jobRole
 				+ ", staffPerson=" + staffPerson + "]";
+	}
+
+	public int getIdStaff() {
+		return idStaff;
+	}
+
+	public void setIdStaff(int idStaff) {
+		this.idStaff = idStaff;
 	}	
 }
