@@ -52,10 +52,6 @@ public class Customer {
 		this.accountNumber = accountNumber;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -90,7 +86,8 @@ public class Customer {
 
 	public void setPerson(Person person) {
 		this.person = person;
-
+	}
+		
 	public String getEmail() {
 		return email;
 	}
