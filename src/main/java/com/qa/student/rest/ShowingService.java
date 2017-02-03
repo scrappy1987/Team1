@@ -73,11 +73,11 @@ public class ShowingService {
 	}
 	
 	public void updateShowing(String jsonString){
-		Showing screen = gsonParser.fromJson(jsonString, Showing.class);
-		updateScreen(screen);
+		Showing showing = gsonParser.fromJson(jsonString, Showing.class);
+		updateShowing(showing);
 	}
 	
-	public void updateScreen(Showing showing){
+	public void updateShowing(Showing showing){
 		Showing checker = em.find(Showing.class, showing);
 		if(checker == null){
 			SCREENLOGGER.info("Screen doesn't exist");
