@@ -16,13 +16,6 @@ public class CustomerTest {
 	}
 	
 	@Test
-	public void getPersonIdTest(){
-		Customer cus = new Customer();
-		cus.setPersonID(250);
-		assertEquals(cus.getPersonID(),250);
-	}
-	
-	@Test
 	public void getemailTest(){
 		Customer cus = new Customer();
 		cus.setEmail("testExample");
