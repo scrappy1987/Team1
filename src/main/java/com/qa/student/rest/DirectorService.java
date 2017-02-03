@@ -25,24 +25,6 @@ public class DirectorService {
 	@Inject
 	private EntityManager em;
 
-	private int id;
-	private int keyID;
-	private Gson gson;
-	private GsonBuilder gsonbuilder;
-	//private Map<Integer, Director> DirectorMap;
-
-	public DirectorService(){
-		this.id = 1;
-		this.keyID = 1;
-		this.gson = new Gson();
-		this.gsonbuilder = new GsonBuilder();
-		//		List mockedList = mock(List.class);
-		//		mockedList.add("one");
-		//		mockedList.clear();
-		//		verify(mockedList).add("one");
-		//		verify(mockedList).clear();
-	}
-
 	public String addDirectorToDB(Director newDirector){		
 		Director tempDir = em.find(Director.class, newDirector);
 		if (tempDir != null){
@@ -55,7 +37,7 @@ public class DirectorService {
 	}
 
 	public Director getDirectorUsingID(int keyToFind){
-		Director tempDir = em.find(Director.class, id);
+		Director tempDir = em.find(Director.class, keyToFind);
 		if(tempDir != null){
 			return tempDir;
 		}
