@@ -1,6 +1,5 @@
 package com.qa.student.rest;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -8,10 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 import com.google.gson.Gson;
 import com.qa.student.model.Person;
@@ -87,18 +83,10 @@ public class StaffService {
 		}
 	}
 	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
 	@SuppressWarnings("unchecked")
 	public List<Staff> getAllStaffList(){
-	/*	Query dbQ = em.createQuery("SELECT s FROM Staff s");
-		List<Staff> staffList = null;*/
-		
 		List<Staff> staffList = em.createQuery("SELECT s FROM Staff s").getResultList();
-		//if(staffList instanceof Collection)
-			return staffList;
-		//else
-			//return null;
+		return staffList;
 	}
 
 	public void updateStaff(Staff staff)
@@ -124,7 +112,7 @@ public class StaffService {
 		Staff existingCheck = em.find(Staff.class, staff);
 		if(staff != null && existingCheck == null)
 		{
-			em.persist(staff);			
+			em.remove(staff);			
 			STAFFLOGGER.info("Staff Deleted - from com.qa.student.rest/StaffService/deleteStaff");
 		}
 		else

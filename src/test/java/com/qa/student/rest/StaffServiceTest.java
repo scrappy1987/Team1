@@ -46,7 +46,7 @@ public class StaffServiceTest {
 		Mockito.when(qry.getSingleResult()).thenReturn(addStaff);
 		Staff checked =	gs.fromJson(staffServ.getStaff(addStaff.getIdStaff()), Staff.class);
 				
-		Assert.assertEquals(checked.getJobRole(), "testRole");		// CHANGE THIS ON FIRDAY TO BE GET THE LIST AND CHECK LIST OK THANKS
+		Assert.assertEquals(checked.getJobRole(), "testRole");		
 		
 		Mockito.verify(em).createQuery(Mockito.anyString());
 	}
@@ -62,23 +62,10 @@ public class StaffServiceTest {
 		String jsonList = staffServ.getAllStaffStr();
 		List<Staff> assertList = gs.fromJson(jsonList, new TypeToken<List<Staff>>(){}.getType());
 		
-		
-		
-		
 		Staff checked =	gs.fromJson(staffServ.getStaff(addStaff.getIdStaff()), Staff.class);
 		
-		//list = gs.fromJson(String, new TypeToken<List<Staff>>(){}.getType());
-		
-		
-		
-		Assert.assertEquals(assertList.get(0).getJobRole(), "testRole");		// CHANGE THIS ON FIRDAY TO BE GET THE LIST AND CHECK LIST OK THANKS
-		
-		Mockito.verify(em).createQuery(Mockito.anyString());
-		
-		
-		//List<Staff> list = gs.fromJson(String, new TypeToken<List<Staff>>(){}.getType());
-		
-		
+		Assert.assertEquals(assertList.get(0).getJobRole(), "testRole");	
+		Mockito.verify(em).createQuery(Mockito.anyString());		
 	}
 	@Test
 	public void serviceAddTestConstr() {
@@ -90,10 +77,9 @@ public class StaffServiceTest {
 		Mockito.when(qry.getSingleResult()).thenReturn(addStaff);
 		Staff checked = staffServ.getStaffObj(0 /*addStaff.getIdStaff()*/);
 				
-		Assert.assertEquals(checked.getJobRole(), "testRole");		// CHANGE THIS ON FIRDAY TO BE GET THE LIST AND CHECK LIST OK THANKS
+		Assert.assertEquals(checked.getJobRole(), "testRole");		
 		
 		Mockito.verify(em).createQuery(Mockito.anyString());
-		
 	}
 	
 	@Test
@@ -105,24 +91,8 @@ public class StaffServiceTest {
 		Mockito.when(em.createQuery(Mockito.anyString())).thenReturn(qry);
 		Mockito.when(qry.getResultList()).thenReturn(listStaff);
 		List<Staff> assertList = staffServ.getAllStaffList();
-		//List<Staff> assertList = gs.fromJson(jsonList, new TypeToken<List<Staff>>(){}.getType());
 		
-		
-		
-		
-		//Staff checked =	gs.fromJson(staffServ.getStaff(addStaff.getIdStaff()), Staff.class);
-		
-		//list = gs.fromJson(String, new TypeToken<List<Staff>>(){}.getType());
-		
-		
-		
-		Assert.assertEquals(assertList.get(0).getJobRole(), "testRole");		// CHANGE THIS ON FIRDAY TO BE GET THE LIST AND CHECK LIST OK THANKS
-		
-		Mockito.verify(em).createQuery(Mockito.anyString());
-		
-		
+		Assert.assertEquals(assertList.get(0).getJobRole(), "testRole");		
+		Mockito.verify(em).createQuery(Mockito.anyString());		
 	}
-
-	
-
 }
